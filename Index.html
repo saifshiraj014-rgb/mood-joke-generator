@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Joke Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      max-width: 450px;
+    }
+    select, button {
+      margin-top: 15px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #ff7eb3;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ff4e9b;
+    }
+    #joke {
+      font-size: 18px;
+      margin-top: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>😂 Mood Based Joke Generator</h1>
+    <label for="mood">তোমার মুড সিলেক্ট করো:</label>
+    <br>
+    <select id="mood">
+      <option value="happy">😄 Happy</option>
+      <option value="sad">😢 Sad</option>
+      <option value="boring">😴 Boring</option>
+      <option value="angry">😡 Angry</option>
+    </select>
+    <br>
+    <button onclick="generateJoke()">জোক দেখাও</button>
+    <p id="joke">এখনও কোনো জোক আসে নাই!</p>
+  </div>
+
+  <script>
+    const jokes = {
+      happy: [
+        "বন্ধু: তুই এত খুশি কেন? 😄 আরেক বন্ধু: ইন্টারনেট ফ্রি পেয়েছি! 😂",
+        "শিক্ষক: তোমার হাসির কারণ? ছাত্র: স্যার, বই পড়িনি তাই চিন্তাও নেই! 🤣"
+      ],
+      sad: [
+        "বন্ধু: মন খারাপ কেন? 😢 অন্য বন্ধু: মোবাইলের চার্জ শেষ, জীবনও শেষ! 📱",
+        "বাবা: রেজাল্ট কেমন হলো? ছেলে: গুগলেও খুঁজে পাওয়া যাবে না বাবা! 😭"
+      ],
+      boring: [
+        "বন্ধু: জীবন এত বোরিং কেন? 😴 উত্তর: কারণ পড়াশোনা চলছে! 📚",
+        "ছাত্র: ক্লাস এত লম্বা কেন? শিক্ষক: কারণ ঘুম আসা বন্ধ করতে হবে! 😆"
+      ],
+      angry: [
+        "মা: এত রাগ করিস কেন? 😡 ছেলে: Wifi স্লো চলছে মা! 🔥",
+        "বন্ধু: রাগ কমাও ভাই। 😡 অন্য বন্ধু: আগে নেট স্পিড বাড়াও! 🤬"
+      ]
+    };
+
+    function generateJoke() {
+      const mood = document.getElementById("mood").value;
+      const moodJokes = jokes[mood];
+      const randomIndex = Math.floor(Math.random() * moodJokes.length);
+      document.getElementById("joke").innerText = moodJokes[randomIndex];
+    }
+  </script>
+</body>
+</html>
